@@ -82,3 +82,11 @@ const server = http.createServer(async (req, res) => {
 server.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
+
+server.on("error", (err) => {
+  if (err.code === "EADDRINUSE") {
+    console.error("Port 3000 is already in use");
+    process.exit(1);
+  }
+  console.error(err);
+});
