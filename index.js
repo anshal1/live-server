@@ -48,7 +48,7 @@ const server = http.createServer(async (req, res) => {
       const reloadscript = `const events = new EventSource('/__live_reload')
 
       events.onmessage = event => {
-          if(event.data.endsWith(".html")){
+          if(event.data.endsWith(".html") || event.data.endsWith(".js")){
             location.reload();
             return
           }
